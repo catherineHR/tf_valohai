@@ -33,7 +33,7 @@ def train():
     mnist = input_data.read_data_sets(train_dir, one_hot=True, fake_data=FLAGS.fake_data)
 
     # Add ops to save and restore all the variables.
-    saver = tf.train.Saver()
+    # saver = tf.train.Saver()
 
     sess = tf.InteractiveSession()
 
@@ -190,7 +190,7 @@ def train():
         np.savetxt(filename, bs.eval(), delimiter=",")
 
     # Save the variables to disk.
-    save_path = saver.save(sess, os.path.join(outputs_dir, "model.ckpt")
+    # save_path = saver.save(sess, os.path.join(outputs_dir, "model.ckpt")
     # print("Model saved in file:", save_path)
 
 
