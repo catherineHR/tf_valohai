@@ -32,6 +32,9 @@ def train():
         copy2(file, train_dir)
     mnist = input_data.read_data_sets(train_dir, one_hot=True, fake_data=FLAGS.fake_data)
 
+    # Add ops to save and restore all the variables.
+    saver = tf.train.Saver()
+
     sess = tf.InteractiveSession()
 
     # Create a multilayer model.
@@ -185,6 +188,10 @@ def train():
     for i, bs in enumerate(all_biases):
         filename = os.path.join(outputs_dir, 'layer-{}-biases.csv'.format(i))
         np.savetxt(filename, bs.eval(), delimiter=",")
+
+    # Save the variables to disk.
+    save_path = saver.save(sess, os.path.join(outputs_dir, "model.ckpt")
+    print("Model saved in file: %s" % save_path)
 
 
 def main(_):
