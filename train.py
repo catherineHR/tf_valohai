@@ -191,7 +191,7 @@ def train():
 
     # Save the variables to disk.
     save_path = saver.save(sess, os.path.join(outputs_dir, "model.ckpt")
-    print("Model saved in file:", save_path)
+    # print("Model saved in file:", save_path)
 
 
 def main(_):
